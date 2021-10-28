@@ -17,7 +17,7 @@ const restartButton = document.getElementById("restartButton")
 restartButton.disabled = true
 
 const music = document.getElementById("musicplayer")
-music.volume = 0.01;
+music.volume = 0.1;
 
 
 //drop options for objects
