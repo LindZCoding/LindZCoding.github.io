@@ -16,8 +16,14 @@ const startButton = document.getElementById("startButton")
 const restartButton = document.getElementById("restartButton")
 restartButton.disabled = true
 
+const music = document.getElementById("musicplayer")
+music.volume = 0.01;
+
+
 //drop options for objects
 const dropOptions = [0, 185, 370, 555, 740]
+
+const playerWidth = 60;
 
 let lastOption;
 
@@ -88,11 +94,11 @@ function Star(x, y, color, width, height) {
     this.alive = true
     this.render = function () {
         ctx.fillStyle = this.color
-        ctx.drawImage(starImage, this.x, this.y, this.width, this.height)
+        ctx.drawImage(starImage, this.x + playerWidth / 2 - this.width/2, this.y, this.width, this.height)
     }
 }
 
-let player = new Player(370, 540, "#6FC9E7", 60, 60)
+let player = new Player(370, 540, "#6FC9E7", playerWidth, 60)
 // let meteorOne = new Meteor(0, -50, "pink", 60, 40)
 // let meteorTwo = new Meteor(185, -60, "pink", 60, 40)
 // let meteorThree = new Meteor(370, -60, "pink", 60, 40)
@@ -133,6 +139,7 @@ function incrementPoints(currentStar) {
         return;
     } else {
         interactions.push(currentStar);
+        //sound
         //score goes up by 1 every time star is collected
         score++ 
         pointsView.innerText = labelPointsText() 
